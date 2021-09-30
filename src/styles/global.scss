@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Yaldevi Light';
+  src: url('../fonts//Yaldevi-Light.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Yaldevi Regular';
+  src: url('../fonts//Yaldevi-Regular.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Yaldevi Bold';
+  src: url('../fonts//Yaldevi-Bold.ttf');
+  font-display: swap;
+}
+:root {
+  --main-red: #e42256;
+}
+body {
+  font-family: 'Yaldevi Regular';
+}
+h1 {
+  font-family: 'Yaldevi Bold';
+}
