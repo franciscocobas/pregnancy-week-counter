@@ -31,7 +31,8 @@ const StyledHomePageComponent = styled.div`
     max-width: 500px;
     margin: 0 auto;
     padding: 1rem 0;
-    h2 {
+    h2,
+    h3 {
       margin: 0;
       color: black;
       /* text-shadow: 1px 1px var(--main-red); */
@@ -47,16 +48,22 @@ const StyledHomePageComponent = styled.div`
 
 function App() {
   const [weeks, setWeeks] = useState<string>('');
+  const [remainingDays, setRemainingDays] = useState<number>();
 
   useEffect(() => {
     // 13/06/2021
 
     const conceptionDate = new Date('2021-06-13T06:00:00');
+    const estimatedBirthDate = new Date('2022-03-26T06:00:00');
     const today = new Date();
     const difference = today.getTime() - conceptionDate.getTime();
     const weeksNumber = difference / (1000 * 60 * 60 * 24 * 7);
+    const differenceRemainingDays =
+      estimatedBirthDate.getTime() - today.getTime();
+    const tmpRemainingDays = differenceRemainingDays / (1000 * 60 * 60 * 24);
 
     setWeeks(Math.floor(weeksNumber).toString());
+    setRemainingDays(Math.floor(tmpRemainingDays));
   }, []);
 
   return (
@@ -67,6 +74,8 @@ function App() {
       <div className='estimation-birth-date'>
         <h2>Fecha estimada de nacimiento:</h2>
         <p>26/03/2022</p>
+        <h3>Días restantes:</h3>
+        <p>{remainingDays}</p>
       </div>
     </StyledHomePageComponent>
   );
