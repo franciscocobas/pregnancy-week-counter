@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './styles/global.scss';
 
+import nosotresImg from './images/nosotres.webp';
+
 const StyledHomePageComponent = styled.div`
   max-width: 1100px;
   margin: 0 auto;
@@ -15,6 +17,13 @@ const StyledHomePageComponent = styled.div`
   }
   p:nth-child(2) {
     font-size: 5rem;
+  }
+  img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 1rem 0;
   }
   p:nth-child(3) {
     font-size: 10rem;
@@ -48,34 +57,26 @@ const StyledHomePageComponent = styled.div`
 
 function App() {
   const [weeks, setWeeks] = useState<string>('');
-  const [remainingDays, setRemainingDays] = useState<number>();
 
   useEffect(() => {
     // 13/06/2021
 
     const conceptionDate = new Date('2021-06-13T06:00:00');
-    const estimatedBirthDate = new Date('2022-03-26T06:00:00');
     const today = new Date();
     const difference = today.getTime() - conceptionDate.getTime();
     const weeksNumber = difference / (1000 * 60 * 60 * 24 * 7);
-    const differenceRemainingDays =
-      estimatedBirthDate.getTime() - today.getTime();
-    const tmpRemainingDays = differenceRemainingDays / (1000 * 60 * 60 * 24);
 
     setWeeks(Math.floor(weeksNumber).toString());
-    setRemainingDays(Math.floor(tmpRemainingDays));
   }, []);
 
   return (
     <StyledHomePageComponent>
       <h1>Semanas de embarazo</h1>
-      <p>🤰🏻</p>
+      <img src={nosotresImg} alt='Nosotres ^^' />
       <p>{weeks}</p>
       <div className='estimation-birth-date'>
         <h2>Fecha estimada de nacimiento:</h2>
         <p>26/03/2022</p>
-        <h3>Días restantes:</h3>
-        <p>{remainingDays}</p>
       </div>
     </StyledHomePageComponent>
   );
