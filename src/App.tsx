@@ -24,6 +24,8 @@ const StyledHomePageComponent = styled.div`
     height: 200px;
     object-fit: cover;
     margin: 1rem 0;
+    border: 3px solid black;
+    box-shadow: 0 0 10px black;
   }
   p:nth-child(3) {
     font-size: 10rem;
