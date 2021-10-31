@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import './styles/global.scss';
+import React, {useEffect, useState} from "react";
+import styled from "styled-components";
+import "./styles/global.scss";
 
-import nosotresImg from './images/nosotres.webp';
+import nosotresImg from "./images/nosotres.webp";
 
 const StyledHomePageComponent = styled.div`
   max-width: 1100px;
@@ -51,21 +51,21 @@ const StyledHomePageComponent = styled.div`
     p:last-child {
       color: black;
       font-size: 1.25rem;
-      font-family: 'Yaldevi Light';
+      font-family: "Yaldevi Light";
       font-style: italic;
     }
   }
 `;
 
 function App() {
-  const [weeks, setWeeks] = useState<string>('');
+  const [weeks, setWeeks] = useState<string>("");
+  const [estimatedConceptionDate] = useState<Date>(new Date("2021-06-20T06:00:00"));
 
   useEffect(() => {
-    // 13/06/2021
+    // 20/06/2021
 
-    const conceptionDate = new Date('2021-06-13T06:00:00');
     const today = new Date();
-    const difference = today.getTime() - conceptionDate.getTime();
+    const difference = today.getTime() - estimatedConceptionDate.getTime();
     const weeksNumber = difference / (1000 * 60 * 60 * 24 * 7);
 
     setWeeks(Math.floor(weeksNumber).toString());
@@ -74,11 +74,15 @@ function App() {
   return (
     <StyledHomePageComponent>
       <h1>Semanas de embarazo</h1>
-      <img src={nosotresImg} alt='Nosotres ^^' />
+      <img alt="Nosotres ^^" src={nosotresImg} />
       <p>{weeks}</p>
-      <div className='estimation-birth-date'>
+      <div className="estimation-birth-date">
         <h2>Fecha estimada de nacimiento:</h2>
-        <p>26/03/2022</p>
+        <p>
+          {new Date(
+            estimatedConceptionDate.getTime() + 40 * 7 * 24 * 60 * 60 * 1000,
+          ).toLocaleDateString()}
+        </p>
       </div>
     </StyledHomePageComponent>
   );
