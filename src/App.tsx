@@ -69,7 +69,7 @@ function App() {
     const weeksNumber = difference / (1000 * 60 * 60 * 24 * 7);
 
     setWeeks(Math.floor(weeksNumber).toString());
-  }, []);
+  }, [estimatedConceptionDate]);
 
   return (
     <StyledHomePageComponent>
